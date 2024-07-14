@@ -81,7 +81,7 @@ const Page: React.FC = () => {
   return (
     <div className='fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-75'>
       {showSignup ? (
-        <div className='flex bg-black w-1/2 rounded-lg overflow-hidden shadow-lg h-4/5'>
+        <div className='flex bg-black w-3/4 lg:w-1/2 rounded-lg overflow-hidden shadow-lg h-3/4'>
           <div className='w-1/2 flex justify-center items-center'>
             <Image
               src={logo}
@@ -105,7 +105,12 @@ const Page: React.FC = () => {
                 placeholder='Email'
                 size='lg'
                 variant='solid'
-                onChange={(e) => setSignupFormData({ ...signupFormData, email: e.target.value })}
+                onChange={(e) =>
+                  setSignupFormData({
+                    ...signupFormData,
+                    email: e.target.value,
+                  })
+                }
               />
               <Input
                 color='warning'
@@ -113,7 +118,12 @@ const Page: React.FC = () => {
                 size='lg'
                 variant='solid'
                 type='password'
-                onChange={(e) => setSignupFormData({ ...signupFormData, password: e.target.value })}
+                onChange={(e) =>
+                  setSignupFormData({
+                    ...signupFormData,
+                    password: e.target.value,
+                  })
+                }
               />
               <Input
                 color='warning'
@@ -235,7 +245,7 @@ const Page: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className='flex bg-black w-1/2 rounded-lg overflow-hidden shadow-lg h-4/5'>
+        <div className='flex bg-black w-3/4 lg:w-1/3 rounded-lg overflow-hidden shadow-lg h-auto'>
           <div className='w-1/2 flex justify-center items-center'>
             <Image
               src={logo}
@@ -260,7 +270,12 @@ const Page: React.FC = () => {
                 size='lg'
                 variant='solid'
                 type='password'
-                onChange={(e) => setLoginFormData({ ...loginFormData, password: e.target.value })}
+                onChange={(e) =>
+                  setLoginFormData({
+                    ...loginFormData,
+                    password: e.target.value,
+                  })
+                }
               />
               <button
                 className='bg-yellow-500 text-black px-4 py-2 rounded w-full mt-4'
