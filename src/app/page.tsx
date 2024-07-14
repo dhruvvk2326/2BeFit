@@ -5,7 +5,6 @@ import logo from "@/assets/—Pngtree—fitness logo_4148172.png";
 import Input from "@mui/joy/Input";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
-import { AiOutlineClose } from "react-icons/ai";
 import dayjs from "dayjs";
 import axios from "axios";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -81,11 +80,6 @@ const Page: React.FC = () => {
 
   return (
     <div className='fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-75'>
-      <button
-        className='absolute top-4 right-4 text-white text-2xl'
-        onClick={() => setShowSignup(false)}>
-        <AiOutlineClose />
-      </button>
       {showSignup ? (
         <div className='flex bg-black w-1/2 rounded-lg overflow-hidden shadow-lg h-4/5'>
           <div className='w-1/2 flex justify-center items-center'>
