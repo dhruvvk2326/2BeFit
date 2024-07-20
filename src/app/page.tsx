@@ -7,6 +7,7 @@ import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 import dayjs from "dayjs";
 import axios from "axios";
+import wallpaper from "@/assets/wallpaper.jpg";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers";
@@ -79,18 +80,10 @@ const Page: React.FC = () => {
   };
 
   return (
-    <div className='fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-75'>
-      {showSignup ? (
-        <div className='flex bg-black w-3/4 lg:w-1/2 rounded-lg overflow-hidden shadow-lg h-3/4'>
-          <div className='w-1/2 flex justify-center items-center'>
-            <Image
-              src={logo}
-              alt='Logo'
-              width={200}
-              height={200}
-            />
-          </div>
-          <div className='w-1/2 h-full border-l border-gray-500 p-5 overflow-y-scroll'>
+    <div className='fixed top-0 left-0 w-full h-full flex'>
+      <div className='w-1/2 h-full flex justify-center items-center bg-gradient-to-r from-gray-800 via-gray-900 to-black'>
+        {showSignup ? (
+          <div className='bg-black bg-opacity-75 w-3/4 lg:w-2/3 rounded-lg overflow-auto shadow-lg p-5 h-3/4'>
             <h1 className='text-yellow-400 text-2xl font-light text-center mb-4'>Signup to become a freak</h1>
             <form className='space-y-4'>
               <Input
@@ -243,18 +236,8 @@ const Page: React.FC = () => {
               </button>
             </p>
           </div>
-        </div>
-      ) : (
-        <div className='flex bg-black w-3/4 lg:w-1/3 rounded-lg overflow-hidden shadow-lg h-auto'>
-          <div className='w-1/2 flex justify-center items-center'>
-            <Image
-              src={logo}
-              alt='Logo'
-              width={200}
-              height={200}
-            />
-          </div>
-          <div className='w-1/2 h-full border-l border-gray-500 p-5 overflow-y-scroll'>
+        ) : (
+          <div className='bg-black bg-opacity-75 w-3/4 lg:w-2/3 rounded-lg overflow-auto shadow-lg p-5 h-auto'>
             <h1 className='text-yellow-400 text-2xl font-light text-center mb-4'>Login to become a freak</h1>
             <form className='space-y-4'>
               <Input
@@ -295,8 +278,19 @@ const Page: React.FC = () => {
               </button>
             </p>
           </div>
-        </div>
-      )}
+        )}
+      </div>
+      <div className='w-1/2 h-full relative'>
+        <Image
+          src={wallpaper}
+          alt='Fitness Wallpaper'
+          layout='fill'
+          objectFit='cover'
+          quality={100}
+          className='rounded-lg'
+        />
+      </div>
+      <ToastContainer />
     </div>
   );
 };
