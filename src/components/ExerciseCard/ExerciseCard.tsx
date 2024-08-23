@@ -1,7 +1,7 @@
 import React from "react";
 import { Stack, Button, Typography, Box } from "@mui/material";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 interface ExerciseCardProps {
     exercise: {

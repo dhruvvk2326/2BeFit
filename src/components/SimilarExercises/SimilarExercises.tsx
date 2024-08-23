@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Typography, Stack, IconButton } from "@mui/material";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import Loader from "@/components/Loader/Loader";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";

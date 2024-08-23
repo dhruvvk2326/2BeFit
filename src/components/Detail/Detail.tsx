@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography, Stack, Button } from "@mui/material";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import BodyPartImage from "@/assets/body-part.png";
 import TargetImage from "@/assets/target.png";
 import EquipmentImage from "@/assets/equipment.png";

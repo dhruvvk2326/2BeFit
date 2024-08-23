@@ -1,6 +1,6 @@
 import React from "react";
 import { Stack, Typography } from "@mui/material";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Icon from "../../assets/gym.png";
 
 interface BodyPartProps {

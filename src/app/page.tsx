@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
-import logo from "@/assets/—Pngtree—fitness logo_4148172.png";
+import Image from "next/legacy/image";
 import Input from "@mui/joy/Input";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
@@ -13,6 +12,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface SignupFormData {
   name: string;
@@ -28,6 +28,7 @@ interface SignupFormData {
 
 const Page: React.FC = () => {
   const [showSignup, setShowSignup] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [signupFormData, setSignupFormData] = useState<SignupFormData>({
     name: "",
     email: "",
@@ -47,35 +48,43 @@ const Page: React.FC = () => {
   const router = useRouter();
 
   const handleLogin = () => {
+    setIsLoading(true);
     axios
       .post("/api/auth/users/login", loginFormData, { withCredentials: true })
       .then((res) => {
         if (res.data.ok) {
           console.log("Login successful");
           toast.success(res.data.message);
-          router.push("/homepage");
+          setTimeout(() => router.push("/homepage"), 2000);
         } else {
           toast.error(res.data.message);
+          setIsLoading(false);
         }
       })
       .catch((err) => {
         console.log(err);
+        toast.error("An error occurred. Please try again.");
+        setIsLoading(false);
       });
   };
 
   const handleSignup = () => {
+    setIsLoading(true);
     axios
       .post("/api/auth/users/register", signupFormData)
       .then((res) => {
         if (res.data.ok) {
           toast.success(res.data.message);
-          router.push("/");
+          setTimeout(() => router.push("/"), 2000);
         } else {
           toast.error(res.data.message);
+          setIsLoading(false);
         }
       })
       .catch((err) => {
         console.log(err);
+        toast.error("An error occurred. Please try again.");
+        setIsLoading(false);
       });
   };
 
@@ -196,17 +205,17 @@ const Page: React.FC = () => {
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DesktopDatePicker
                   sx={{
-                    backgroundColor: "#1a1a1a", // Background color
-                    color: "#ffffff", // Text color
+                    backgroundColor: "#1a1a1a",
+                    color: "#ffffff",
                     zIndex: 10,
                     "& .MuiInputBase-root": {
-                      color: "white", // Ensure the input text is white
+                      color: "white",
                     },
                     "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "yellow", // Border color
+                      borderColor: "yellow",
                     },
                     "& .MuiSvgIcon-root": {
-                      color: "white", // Icon color
+                      color: "white",
                     },
                   }}
                   defaultValue={dayjs(new Date())}
@@ -219,12 +228,13 @@ const Page: React.FC = () => {
                 />
               </LocalizationProvider>
               <button
-                className='bg-yellow-500 text-white px-4 py-2 rounded w-full mt-4'
+                className='bg-yellow-500 text-white px-4 py-2 rounded w-full mt-4 disabled:opacity-50'
                 onClick={(e) => {
                   e.preventDefault();
                   handleSignup();
-                }}>
-                Signup
+                }}
+                disabled={isLoading}>
+                {isLoading ? "Loading..." : "Signup"}
               </button>
             </form>
             <p className='text-white mt-4'>
@@ -261,12 +271,13 @@ const Page: React.FC = () => {
                 }
               />
               <button
-                className='bg-yellow-500 text-black px-4 py-2 rounded w-full mt-4'
+                className='bg-yellow-500 text-black px-4 py-2 rounded w-full mt-4 disabled:opacity-50'
                 onClick={(e) => {
                   e.preventDefault();
                   handleLogin();
-                }}>
-                Login
+                }}
+                disabled={isLoading}>
+                {isLoading ? "Loading..." : "Login"}
               </button>
             </form>
             <p className='text-white mt-4'>
@@ -290,7 +301,18 @@ const Page: React.FC = () => {
           className='rounded-lg'
         />
       </div>
-      <ToastContainer />
+      <ToastContainer
+        position='top-center'
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='dark'
+      />
     </div>
   );
 };
