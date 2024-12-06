@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { connect } from "@/db/dbConfig";
 import User from "@/models/UserSchema";
 import bcryptjs from "bcryptjs";
-import { truncate } from "fs";
 
 export async function POST(req: NextRequest) {
   try {
