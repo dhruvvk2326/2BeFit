@@ -16,7 +16,7 @@ Body Parts: E.g., Chest, Arms, Legs.
 Equipment: E.g., Dumbbells, Machines, Resistance Bands.
 Search bar for querying exercises by name.
 ![Alt text](./photos/homepage1.png)
-![Alt text](./photos/detailpage2.png)
+![Alt text](./photos/homepage2.png)
 3. Detail Page
 Detailed exercise card that displays:
 Exercise GIF for visual guidance.
