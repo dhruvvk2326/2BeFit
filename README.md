@@ -25,6 +25,6 @@ Muscles targeted and body parts involved.
 ![Alt text](photos\ddetailpage1.png)
 4. Related Exercises
 Section for related exercises:
-Suggested exercises based on the user's selection.
+Suggested exercises based on the users selection.
 Direct links to YouTube tutorials for the selected exercise.
 ![Alt text](photos\detailpage2.png)
